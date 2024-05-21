@@ -10,6 +10,7 @@ You can install the library using pip:
 
 ```bash
 pip install rag-evaluator
+```
 
 ## Usage
 
@@ -31,5 +32,5 @@ metrics = evaluator.evaluate_all(question, response, reference)
 
 # Print the results
 print(metrics)
-
+```
 
