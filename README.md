@@ -44,3 +44,10 @@ The following metrics are provided by the library:
 - **Diversity**: Measures the uniqueness of bigrams in the generated output.
 - **Racial Bias**: Detects the presence of biased language in the generated output.
 
+## Testing
+
+To run the tests, use the following command:
+
+```
+python -m unittest discover -s rag_evaluator -p "test_*.py"
+```
