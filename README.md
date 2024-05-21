@@ -51,3 +51,23 @@ To run the tests, use the following command:
 ```
 python -m unittest discover -s rag_evaluator -p "test_*.py"
 ```
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! If you have any improvements, suggestions, or bug fixes, feel free to create a pull request (PR) or open an issue on GitHub. Please ensure your contributions adhere to the project's coding standards and include appropriate tests.
+
+### How to Contribute
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Run tests to ensure everything is working.
+5. Commit your changes and push to your fork.
+6. Create a pull request (PR) with a detailed description of your changes.
+
+## Contact
+
+If you have any questions or need further assistance, feel free to reach out via [email](mailto:aianytime07@gmail.com).
