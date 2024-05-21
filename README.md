@@ -33,4 +33,14 @@ metrics = evaluator.evaluate_all(question, response, reference)
 # Print the results
 print(metrics)
 ```
+## Metrics
+
+The following metrics are provided by the library:
+
+- **BLEU**: Measures the overlap between the generated output and reference text based on n-grams.
+- **ROUGE-1**: Measures the overlap of unigrams between the generated output and reference text.
+- **BERT Score**: Evaluates the semantic similarity between the generated output and reference text using BERT embeddings.
+- **Perplexity**: Measures how well a language model predicts the text.
+- **Diversity**: Measures the uniqueness of bigrams in the generated output.
+- **Racial Bias**: Detects the presence of biased language in the generated output.
 
