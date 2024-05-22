@@ -33,6 +33,17 @@ metrics = evaluator.evaluate_all(question, response, reference)
 # Print the results
 print(metrics)
 ```
+
+## Streamlit Web App
+
+To run the web app:
+
+- cd into streamlit app folder.
+- Create a virtual env
+- Activate
+- Install all dependencies
+- and run ``streamlit run app.py```
+
 ## Metrics
 
 The following metrics are provided by the library:
