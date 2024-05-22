@@ -42,7 +42,10 @@ To run the web app:
 - Create a virtual env
 - Activate
 - Install all dependencies
-- and run ``streamlit run app.py```
+- and run
+```
+streamlit run app.py
+```
 
 ## Metrics
 
