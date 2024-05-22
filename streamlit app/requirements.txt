@@ -1,0 +1,7 @@
+streamlit
+sacrebleu
+rouge-score
+bert-score
+transformers
+torch
+nltk
