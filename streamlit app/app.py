@@ -25,25 +25,37 @@ if st.button("Evaluate"):
         metrics = evaluator.evaluate_all(generated_output, context)
 
         # Display metrics with explanations
-        st.write(f"**BLEU Score**: {metrics['BLEU']}")
-        st.write("BLEU measures the overlap between the generated output and reference text based on n-grams. Higher scores indicate better match.")
+        st.write(f"**BLEU Score**: {metrics['BLEU']:.2f}")
+        st.write("BLEU measures the overlap between the generated output and reference text based on n-grams. Range: 0-100. Higher scores indicate better match.")
 
-        st.write(f"**ROUGE-1 Score**: {metrics['ROUGE-1']}")
-        st.write("ROUGE-1 measures the overlap of unigrams between the generated output and reference text. Higher scores indicate better match.")
+        st.write(f"**ROUGE-1 Score**: {metrics['ROUGE-1']:.2f}")
+        st.write("ROUGE-1 measures the overlap of unigrams between the generated output and reference text. Range: 0-1. Higher scores indicate better match.")
 
-        st.write(f"**BERT Precision**: {metrics['BERT P']}")
-        st.write(f"**BERT Recall**: {metrics['BERT R']}")
-        st.write(f"**BERT F1 Score**: {metrics['BERT F1']}")
-        st.write("BERTScore evaluates the semantic similarity between the generated output and reference text using BERT embeddings.")
+        st.write(f"**BERT Precision**: {metrics['BERT P']:.2f}")
+        st.write(f"**BERT Recall**: {metrics['BERT R']:.2f}")
+        st.write(f"**BERT F1 Score**: {metrics['BERT F1']:.2f}")
+        st.write("BERTScore evaluates the semantic similarity between the generated output and reference text using BERT embeddings. Range: 0-1. Higher scores indicate better semantic similarity.")
 
-        st.write(f"**Perplexity**: {metrics['Perplexity']}")
-        st.write("Perplexity measures how well a language model predicts the text. Lower values indicate better fluency and coherence.")
+        st.write(f"**Perplexity**: {metrics['Perplexity']:.2f}")
+        st.write("Perplexity measures how well a language model predicts the text. Range: 1 to ∞. Lower values indicate better fluency and coherence.")
 
-        st.write(f"**Diversity**: {metrics['Diversity']}")
-        st.write("Diversity measures the uniqueness of bigrams in the generated output. Higher values indicate more diverse and varied output.")
+        st.write(f"**Diversity**: {metrics['Diversity']:.2f}")
+        st.write("Diversity measures the uniqueness of bigrams in the generated output. Range: 0-1. Higher values indicate more diverse and varied output.")
 
-        st.write(f"**Racial Bias**: {metrics['Racial Bias']}")
-        st.write("Racial Bias score indicates the presence of biased language in the generated output. Higher scores indicate more bias.")
+        st.write(f"**Racial Bias**: {metrics['Racial Bias']:.2f}")
+        st.write("Racial Bias score indicates the presence of biased language in the generated output. Range: 0-1. Lower scores indicate less bias.")
+
+        st.write(f"**METEOR Score**: {metrics['METEOR']:.2f}")
+        st.write("METEOR calculates semantic similarity considering synonyms and paraphrases. Range: 0-1. Higher scores indicate better semantic alignment.")
+
+        st.write(f"**CHRF Score**: {metrics['CHRF']:.2f}")
+        st.write("CHRF computes Character n-gram F-score for fine-grained text similarity. Range: 0-1. Higher scores indicate better character-level similarity.")
+
+        st.write(f"**Flesch Reading Ease**: {metrics['Flesch Reading Ease']:.2f}")
+        st.write("Flesch Reading Ease assesses text readability. Range: 0-100. Higher scores indicate easier readability.")
+
+        st.write(f"**Flesch-Kincaid Grade**: {metrics['Flesch-Kincaid Grade']:.2f}")
+        st.write("Flesch-Kincaid Grade indicates the U.S. school grade level needed to understand the text. Range: 0-18+. Lower scores indicate easier readability.")
 
     else:
         st.write("Please provide all inputs to evaluate.")

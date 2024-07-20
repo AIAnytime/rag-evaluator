@@ -5,6 +5,11 @@ from bert_score import score
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, pipeline
 import nltk
 from nltk.util import ngrams
+from nltk.tokenize import word_tokenize
+from nltk.translate.meteor_score import meteor_score
+from nltk.translate.chrf_score import sentence_chrf
+from textstat import flesch_reading_ease, flesch_kincaid_grade
+from sklearn.metrics.pairwise import cosine_similarity
 
 class RAGEvaluator:
     def __init__(self):
@@ -57,6 +62,24 @@ class RAGEvaluator:
         bias_score = results[0]['scores'][results[0]['labels'].index('hate speech')]
         return bias_score
 
+    def evaluate_meteor(self, candidates, references):
+        nltk.download('punkt', quiet=True)  
+        
+        meteor_scores = [
+            meteor_score([word_tokenize(ref)], word_tokenize(cand))
+            for ref, cand in zip(references, candidates)
+        ]
+        return sum(meteor_scores) / len(meteor_scores)
+    
+    def evaluate_chrf(self, candidates, references):
+        chrf_scores = [sentence_chrf(ref, cand) for ref, cand in zip(references, candidates)]
+        return sum(chrf_scores) / len(chrf_scores)
+    
+    def evaluate_readability(self, text):
+        flesch_ease = flesch_reading_ease(text)
+        flesch_grade = flesch_kincaid_grade(text)
+        return flesch_ease, flesch_grade
+
     def evaluate_all(self, question, response, reference):
         candidates = [response]
         references = [reference]
@@ -65,6 +88,9 @@ class RAGEvaluator:
         perplexity = self.evaluate_perplexity(response)
         diversity = self.evaluate_diversity(candidates)
         racial_bias = self.evaluate_racial_bias(response)
+        meteor = self.evaluate_meteor(candidates, references)
+        chrf = self.evaluate_chrf(candidates, references)
+        flesch_ease, flesch_grade = self.evaluate_readability(response)
         return {
             "BLEU": bleu,
             "ROUGE-1": rouge1,
@@ -73,5 +99,9 @@ class RAGEvaluator:
             "BERT F1": bert_f1,
             "Perplexity": perplexity,
             "Diversity": diversity,
-            "Racial Bias": racial_bias
+            "Racial Bias": racial_bias,
+            "METEOR": meteor,
+            "CHRF": chrf,
+            "Flesch Reading Ease": flesch_ease,
+            "Flesch-Kincaid Grade": flesch_grade,
         }

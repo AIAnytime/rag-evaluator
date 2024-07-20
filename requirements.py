@@ -5,3 +5,4 @@ bert-score
 transformers
 nltk
 textblob
+textstat 
