@@ -17,7 +17,8 @@ setup(
         "bert-score",
         "transformers",
         "nltk",
-        "textblob"
+        "textblob",
+        "textstat"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
