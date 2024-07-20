@@ -17,6 +17,10 @@ class TestRAGEvaluator(unittest.TestCase):
         self.assertIn("Perplexity", metrics)
         self.assertIn("Diversity", metrics)
         self.assertIn("Racial Bias", metrics)
+        self.assertIn("METEOR", metrics)
+        self.assertIn("CHRF", metrics)
+        self.assertIn("Flesch Reading Ease", metrics)
+        self.assertIn("Flesch-Kincaid Grade", metrics)
 
 if __name__ == "__main__":
     unittest.main()
