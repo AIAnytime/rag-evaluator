@@ -1,4 +1,5 @@
 import torch
+import mauve
 from sacrebleu import corpus_bleu
 from rouge_score import rouge_scorer
 from bert_score import score
@@ -10,6 +11,7 @@ from nltk.translate.meteor_score import meteor_score
 from nltk.translate.chrf_score import sentence_chrf
 from textstat import flesch_reading_ease, flesch_kincaid_grade
 from sklearn.metrics.pairwise import cosine_similarity
+from mauve import compute_mauve
 
 class RAGEvaluator:
     def __init__(self):
@@ -79,7 +81,12 @@ class RAGEvaluator:
         flesch_ease = flesch_reading_ease(text)
         flesch_grade = flesch_kincaid_grade(text)
         return flesch_ease, flesch_grade
-
+        
+    def evaluate_mauve(self,reference_texts, generated_texts):
+        mauve_score = compute_mauve(list(reference_texts), list(generated_texts))
+        return mauve_score
+        
+        
     def evaluate_all(self, question, response, reference):
         candidates = [response]
         references = [reference]
@@ -88,6 +95,7 @@ class RAGEvaluator:
         perplexity = self.evaluate_perplexity(response)
         diversity = self.evaluate_diversity(candidates)
         racial_bias = self.evaluate_racial_bias(response)
+        mauve_score = self.evaluate_mauve(reference, response)
         meteor = self.evaluate_meteor(candidates, references)
         chrf = self.evaluate_chrf(candidates, references)
         flesch_ease, flesch_grade = self.evaluate_readability(response)
@@ -100,6 +108,7 @@ class RAGEvaluator:
             "Perplexity": perplexity,
             "Diversity": diversity,
             "Racial Bias": racial_bias,
+            "MAUVE": mauve_score,
             "METEOR": meteor,
             "CHRF": chrf,
             "Flesch Reading Ease": flesch_ease,
