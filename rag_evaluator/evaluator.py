@@ -12,6 +12,8 @@ from nltk.translate.chrf_score import sentence_chrf
 from textstat import flesch_reading_ease, flesch_kincaid_grade
 from sklearn.metrics.pairwise import cosine_similarity
 from mauve import compute_mauve
+import nltk
+nltk.download()
 
 class RAGEvaluator:
     def __init__(self):
@@ -83,9 +85,14 @@ class RAGEvaluator:
         return flesch_ease, flesch_grade
         
     def evaluate_mauve(self,reference_texts, generated_texts):
-        mauve_score = compute_mauve(list(reference_texts), list(generated_texts))
-        return mauve_score
-        
+        out = mauve.compute_mauve(
+                                  p_text=reference_texts,  # List of reference texts
+                                  q_text=generated_texts,  # List of generated texts
+                                  device_id=0,             # GPU device ID; set to -1 for CPU
+                                  max_text_length=1024,     # Maximum length of text to truncate
+                                  verbose=False            # Whether to print additional information
+                                )
+        return  out.mauve
         
     def evaluate_all(self, question, response, reference):
         candidates = [response]
