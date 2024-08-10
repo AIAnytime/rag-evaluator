@@ -69,16 +69,19 @@ The RAG Evaluator provides the following metrics:
 6. **Racial Bias** (0-1): Detects the presence of biased language in the generated output.
    - 0.0-0.2: Low probability, 0.2-0.4: Moderate, 0.4-0.6: High, 0.6-0.8: Very high, 0.8-1.0: Extreme
 
-7. **METEOR** (0-1): Calculates semantic similarity considering synonyms and paraphrases.
+7. **MOUVE** (0-1): MAUVE captures contextual meaning, coherence, and fluency while measuring both semantic similarity and stylistic alignment .
+   -  0.0-0.2 (Poor), 0.2-0.4 (Fair), 0.4-0.6 (Good), 0.6-0.8 (Very good), 0.8-1.0 (Excellent).
+     
+8. **METEOR** (0-1): Calculates semantic similarity considering synonyms and paraphrases.
    - 0.0-0.2: Poor, 0.2-0.4: Fair, 0.4-0.6: Good, 0.6-0.8: Very good, 0.8-1.0: Excellent
 
-8. **CHRF** (0-1): Computes Character n-gram F-score for fine-grained text similarity.
+9. **CHRF** (0-1): Computes Character n-gram F-score for fine-grained text similarity.
    - 0.0-0.2: Low, 0.2-0.4: Moderate, 0.4-0.6: Good, 0.6-0.8: High, 0.8-1.0: Very high
 
-9. **Flesch Reading Ease** (0-100): Assesses text readability.
+10. **Flesch Reading Ease** (0-100): Assesses text readability.
    - 0-30: Very difficult, 30-50: Difficult, 50-60: Fairly difficult, 60-70: Standard, 70-80: Fairly easy, 80-90: Easy, 90-100: Very easy
 
-10. **Flesch-Kincaid Grade** (0-18+): Indicates the U.S. school grade level needed to understand the text.
+11. **Flesch-Kincaid Grade** (0-18+): Indicates the U.S. school grade level needed to understand the text.
     - 1-6: Elementary, 7-8: Middle school, 9-12: High school, 13+: College level
 
 ## Testing
