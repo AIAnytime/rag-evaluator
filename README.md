@@ -69,7 +69,7 @@ The RAG Evaluator provides the following metrics:
 6. **Racial Bias** (0-1): Detects the presence of biased language in the generated output.
    - 0.0-0.2: Low probability, 0.2-0.4: Moderate, 0.4-0.6: High, 0.6-0.8: Very high, 0.8-1.0: Extreme
 
-7. **MOUVE** (0-1): MAUVE captures contextual meaning, coherence, and fluency while measuring both semantic similarity and stylistic alignment .
+7. **MAUVE** (0-1): MAUVE captures contextual meaning, coherence, and fluency while measuring both semantic similarity and stylistic alignment .
    -  0.0-0.2 (Poor), 0.2-0.4 (Fair), 0.4-0.6 (Good), 0.6-0.8 (Very good), 0.8-1.0 (Excellent).
      
 8. **METEOR** (0-1): Calculates semantic similarity considering synonyms and paraphrases.
